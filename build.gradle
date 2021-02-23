@@ -25,6 +25,7 @@ buildscript {
 }
 
 allprojects {
+
     apply plugin: "eclipse"
     apply plugin: "idea"
 
@@ -74,6 +75,7 @@ project(":desktop") {
     }
 }
 
+/*
 project(":html") {
 
     // apply plugin: "gwt"
@@ -114,8 +116,9 @@ project(":html") {
         compile "net.mostlyoriginal.artemis-odb:contrib-plugin-profiler:$artemisContribVersion:sources"
     
     }
-    
 }
+
+ */
 
 // Ponga componentes odb en este proyecto
 project(":components") {
