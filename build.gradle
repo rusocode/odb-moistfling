@@ -35,11 +35,12 @@ allprojects {
         roboVMVersion = '2.3.5'
         artemisVersion = '2.3.0' // Actualiza tambien los complementos de Gradle anteriores!
         artemisContribVersion = '2.5.0'
-        //box2DLightsVersion = '1.4'
-        //ashleyVersion = '1.7.0'
-        //aiVersion = '1.8.0'
+        // box2DLightsVersion = '1.4'
+        // ashleyVersion = '1.7.0'
+        // aiVersion = '1.8.0'
     }
-
+    
+    // Hace falta crear este bloque en allprojects?
     /* repositories {
         mavenLocal()
         mavenCentral()
