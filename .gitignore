@@ -1,5 +1,4 @@
 ## Java
-
 *.class
 *.war
 *.ear
@@ -17,7 +16,7 @@ gwt-unitCache/
 www-test/
 .gwt-tmp/
 
-## Android Studio and Intellij and Android in general
+## Android Studio, Intellij y Android en general
 android/libs/armeabi/
 android/libs/armeabi-v7a/
 android/libs/x86/
@@ -55,7 +54,6 @@ nbactions.xml
 nb-configuration.xml
 
 ## Gradle
-
 .gradle
 gradle-app.setting
 
