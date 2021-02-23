@@ -6,11 +6,11 @@ import net.mostlyoriginal.game.GameRules;
 import net.mostlyoriginal.game.GdxArtemisGame;
 
 public class DesktopLauncher {
-	public static void main (String[] arg) {
+	public static void main(String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		config.width = GameRules.SCREEN_WIDTH;
 		config.height = GameRules.SCREEN_HEIGHT;
 		config.title = "Astrodrift";
 		new LwjglApplication(new GdxArtemisGame(), config);
-		}
-		}
+	}
+}

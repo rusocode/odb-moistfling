@@ -62,8 +62,8 @@ project(":desktop") {
         compile project(":core")
         compile "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
-        
-   // Modulos LibGDX opcionales
+
+        // Modulos LibGDX opcionales
         compile "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-desktop"
         // compile "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-desktop"
         // compile "com.badlogicgames.gdx:gdx-bullet-platform:$gdxVersion:natives-desktop"
@@ -73,8 +73,6 @@ project(":desktop") {
         
     }
 }
-
-/*
 
 project(":html") {
 
@@ -87,7 +85,7 @@ project(":html") {
         compile "com.badlogicgames.gdx:gdx:$gdxVersion:sources"
         compile "com.badlogicgames.gdx:gdx-backend-gwt:$gdxVersion:sources"
 
-    // Modulos LibGDX opcionales
+        // Modulos LibGDX opcionales
         compile "com.badlogicgames.gdx:gdx-box2d:$gdxVersion:sources"
         compile "com.badlogicgames.gdx:gdx-box2d-gwt:$gdxVersion:sources"
         // compile "com.badlogicgames.gdx:gdx-controllers:$gdxVersion:sources"
@@ -96,30 +94,28 @@ project(":html") {
         // compile "com.badlogicgames.box2dlights:box2dlights:$box2DLightsVersion:sources"
         // compile "com.badlogicgames.gdx:gdx-ai:$aiVersion:sources"
 
-    // artemis-odb core
+        // artemis-odb core
         compile "net.onedaybeard.artemis:artemis-odb-gwt:$artemisVersion"
         compile "net.onedaybeard.artemis:artemis-odb-gwt:$artemisVersion:sources"
         compile "net.onedaybeard.artemis:artemis-odb:$artemisVersion:sources"
 
-    // artemis-odb  + serialization
+        // artemis-odb  + serialization
         // compile "net.onedaybeard.artemis:artemis-odb-serializer:$artemisVersion:sources"
         // compile "net.onedaybeard.artemis:artemis-odb-serializer-json-libgdx:$artemisVersion:sources"
 
-    // Funcionalidad opcional Artemis-odb (sistemas, eventos, componentes)
+        // Funcionalidad opcional Artemis-odb (sistemas, eventos, componentes)
         compile "net.mostlyoriginal.artemis-odb:contrib-core:$artemisContribVersion:sources"
         compile "net.mostlyoriginal.artemis-odb:contrib-jam:$artemisContribVersion:sources"
         compile "net.mostlyoriginal.artemis-odb:contrib-eventbus:$artemisContribVersion:sources"
         compile "net.mostlyoriginal.artemis-odb:contrib-plugin-operations:$artemisContribVersion:sources"
         compile "net.mostlyoriginal.artemis-odb:contrib-plugin-singleton:$artemisContribVersion:sources"
     
-    // gwt 'com.google.code.findbugs:jsr305:3.0.2'
+        // gwt 'com.google.code.findbugs:jsr305:3.0.2'
         compile "net.mostlyoriginal.artemis-odb:contrib-plugin-profiler:$artemisContribVersion:sources"
     
     }
     
 }
-
- */
 
 // Ponga componentes odb en este proyecto
 project(":components") {
@@ -167,7 +163,7 @@ project(":core") {
 
         compileOnly "net.onedaybeard.artemis:artemis-fluid-core:$artemisVersion"
 
-    // Modulos LibGDX opcionales
+        // Modulos LibGDX opcionales
         compile "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
         // compile "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
         // compile "com.badlogicgames.gdx:gdx-bullet:$gdxVersion"
@@ -175,11 +171,11 @@ project(":core") {
         // compile "com.badlogicgames.box2dlights:box2dlights:$sLightsVersion"
         // compile "com.badlogicgames.gdx:gdx-ai:$aiVersion"
 
-    // Artemis-odb
+        // Artemis-odb
         compile "net.onedaybeard.artemis:artemis-odb:$artemisVersion"
         compile "net.onedaybeard.artemis:artemis-odb-serializer-json-libgdx:$artemisVersion"
 
-    // Funcionalidad extra de Artemis-odb (sistemas, eventos, componentes).
+        // Funcionalidad extra de Artemis-odb (sistemas, eventos, componentes).
         compile "net.mostlyoriginal.artemis-odb:contrib-core:$artemisContribVersion"
         compile "net.mostlyoriginal.artemis-odb:contrib-jam:$artemisContribVersion"
         compile "net.mostlyoriginal.artemis-odb:contrib-eventbus:$artemisContribVersion"
