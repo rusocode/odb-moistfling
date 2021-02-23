@@ -12,10 +12,14 @@ buildscript {
     }
     
     dependencies {
-        // Rutas de clase (archivos .jar remotos)
+
+        // Agrega las dependencias pasandole las rutas de clases (archivos .jar remotos o locales (.gradle))
         // classpath 'org.wisepersist:gwt-gradle-plugin:1.0.9'
         // classpath 'com.android.tools.build:gradle:3.4.1'
         // classpath 'com.mobidevelop.robovm:robovm-gradle-plugin:2.3.7'
+
+        // Lo agrege por que no encontraba las interfaces JsonSerializer y JsonDeserializer
+        classpath "com.google.code.gson:gson:2.8.6"
 
         // lib para tejido artemis-odb
         // Ver https://github.com/junkdog/artemis-odb/wiki/Bytecode-weaving
@@ -53,6 +57,11 @@ allprojects {
        jcenter()
        google()
     }
+
+    tasks.withType(JavaCompile) {
+        options.compilerArgs << "-Xlint:deprecation"
+    }
+
 }
 
 // Submodulos
