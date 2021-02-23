@@ -79,7 +79,7 @@ project(":html") {
 
     dependencies {
         compile project(":core")
-        compile "com.badlogicgames.gdx:gdx-backend-gwt:$gdxVersion"
+        // compile "com.badlogicgames.gdx:gdx-backend-gwt:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx:$gdxVersion:sources"
         compile "com.badlogicgames.gdx:gdx-backend-gwt:$gdxVersion:sources"
 
@@ -112,6 +112,7 @@ project(":html") {
         compile "net.mostlyoriginal.artemis-odb:contrib-plugin-profiler:$artemisContribVersion:sources"
     
     }
+    
 }
 
 // Ponga componentes odb en este proyecto
@@ -128,6 +129,7 @@ project(":components") {
         compile "net.mostlyoriginal.artemis-odb:contrib-jam:$artemisContribVersion"
         compile "com.badlogicgames.gdx:gdx:$gdxVersion"
     }
+    
 }
 
 // Logica y sistemas de juego
