@@ -2,11 +2,9 @@ package net.mostlyoriginal.game.component;
 
 import com.artemis.Component;
 
-/**
- * @author Daan van Yperen
- */
+// Puntuacion
 public class Score {
-   public int checkpoints=0;
-   public float age=0;
-   public int levelStartCheckpoints=0;
+	public int checkpoints = 0;
+	public float age = 0;
+	public int levelStartCheckpoints = 0;
 }
