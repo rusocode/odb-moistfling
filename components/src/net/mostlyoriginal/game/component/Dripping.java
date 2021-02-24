@@ -2,10 +2,8 @@ package net.mostlyoriginal.game.component;
 
 import com.artemis.Component;
 
-/**
- * @author Daan van Yperen
- * */
+// Goteo
 public class Dripping extends Component {
-    public float duration=2f;
-    public float age=0;
+	public float duration = 2f; // Duracion hardcodeada en 2.0
+	public float age = 0;
 }

@@ -2,13 +2,11 @@ package net.mostlyoriginal.game.component;
 
 import com.artemis.Component;
 
-/**
- * @author Daan van Yperen
- */
+// Parpadeo
 public class Blinking extends Component {
-    public float duration=2;
+	public float duration = 2;
 
-    public void set(float duration ) {
-        this.duration=duration;
-    }
+	public void set(float duration) {
+		this.duration = duration;
+	}
 }

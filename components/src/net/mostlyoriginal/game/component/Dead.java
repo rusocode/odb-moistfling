@@ -2,8 +2,6 @@ package net.mostlyoriginal.game.component;
 
 import com.artemis.Component;
 
-/**
- * @author Daan van Yperen
- */
+// Muerte
 public class Dead extends Component {
 }

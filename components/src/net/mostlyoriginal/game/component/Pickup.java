@@ -2,14 +2,12 @@ package net.mostlyoriginal.game.component;
 
 import com.artemis.Component;
 
-/**
- * @author Daan van Yperen
- */
+// Recoger
 public class Pickup extends Component {
-    public Type type;
-    public enum Type {
-        OXYGEN,
-        EXIT,
-        CLICKABLE, TUTORIAL, BLINKER
-    }
+	public Type type;
+
+	// Objetos para recoger:
+	public enum Type {
+		OXYGEN, EXIT, CLICKABLE, TUTORIAL, BLINKER
+	}
 }
