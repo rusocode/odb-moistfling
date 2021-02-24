@@ -5,13 +5,10 @@ import com.artemis.annotations.Transient;
 import com.badlogic.gdx.maps.MapProperties;
 
 /**
- * Marks an entity as supplied on the map.
- *
- * @author Daan van Yperen
+ * Marca una entidad como proporcionada en el mapa.
  */
-@Transient
-public class MapEntityMarker extends Component {
-    public int mapX;
-    public int mapY;
-    public MapProperties properties;
+@Transient public class MapEntityMarker extends Component {
+	public int mapX;
+	public int mapY;
+	public MapProperties properties;
 }

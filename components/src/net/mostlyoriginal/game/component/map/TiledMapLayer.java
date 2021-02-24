@@ -5,11 +5,8 @@ import com.artemis.annotations.Transient;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 
 /**
- * TiledMap tile layer.
- *
- * @author Daan van Yperen
+ * Capa de mosaico TiledMap (cuadros).
  */
-@Transient
-public class TiledMapLayer extends Component {
-    public TiledMapTileLayer layer;
+@Transient public class TiledMapLayer extends Component {
+	public TiledMapTileLayer layer;
 }

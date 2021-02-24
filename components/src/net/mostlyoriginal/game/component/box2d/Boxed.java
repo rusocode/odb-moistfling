@@ -5,9 +5,8 @@ import com.artemis.annotations.DelayedComponentRemoval;
 import com.badlogic.gdx.physics.box2d.Body;
 
 /**
- * @author Daan van Yperen
+ * Un cuerpo rigido. Estos se crean a traves de World.CreateBody.
  */
-@DelayedComponentRemoval
-public class Boxed extends Component {
-    public Body body;
+@DelayedComponentRemoval public class Boxed extends Component {
+	public Body body;
 }

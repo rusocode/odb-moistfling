@@ -4,11 +4,9 @@ import com.artemis.Component;
 import com.artemis.annotations.PooledWeaver;
 
 /**
- * Pooled testing component.
+ * Componente de prueba agrupado.
  *
  * @see net.mostlyoriginal.game.system.detection.OdbFeatureDetectionSystem
- * @author Daan van Yperen
  */
-@PooledWeaver
-public class PoolDetectionComponent extends Component {
+@PooledWeaver public class PoolDetectionComponent extends Component {
 }

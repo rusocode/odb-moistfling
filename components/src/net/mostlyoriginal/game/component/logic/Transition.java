@@ -4,11 +4,13 @@ import com.artemis.Component;
 import com.badlogic.gdx.Screen;
 
 /**
- * Transition helper between screens.
- *
- * @author Daan van Yperen
+ * Ayudante de transicion entre pantallas.
  */
 public class Transition extends Component {
+
+	/**
+	 * Campo generico Class con tipo comodin (?), para que se puedan crear objetos que implementen la interfaz Screen.
+	 */
 	public Class<? extends Screen> screen;
 
 	public Transition() {
