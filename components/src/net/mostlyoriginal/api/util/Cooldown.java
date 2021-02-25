@@ -6,15 +6,16 @@ package net.mostlyoriginal.api.util;
  * {@code Cooldown c = c.withInterval(seconds(5));}
  * Call {@code if(c.ready(delta)) { doAction(); } }
  * <p>
- * De forma predeterminada, se activa siempre que ha pasado el intervalo dado y se restablece a otro intervalo completo.
+ * Por defecto, se activa siempre que ha pasado el intervalo dado y se restablece a otro intervalo completo.
  * <p>
  * Use {@link #subtractOverflowFromNextCooldown(boolean)} para configurar como lidiar con los desbordamientos.
- * Digamos que un tiempo de reutilizacion de 10 ms se activa con un delta de 16 ms. El desbordamiento
+ * Digamos que un cooldown de 10 ms se activa con un delta de 16 ms. El desbordamiento
  * de 6 ms puede contar para el siguiente intervalo.
  * <p>
  * Use {@link #autoReset(boolean)} cuando desee controlar el reinicio manualmente ejecutando {@link #restart()}
  */
 public class Cooldown {
+
 	private FloatSupplier intervalSupplier; // Proveedor de intervalo
 	private float cooldown;
 	private boolean autoReset = true;
@@ -30,19 +31,21 @@ public class Cooldown {
 		this.cooldown = this.intervalSupplier.get();
 	}
 
+	// Cooldown con un intervalo especificado de tipo float
 	public static Cooldown withInterval(float interval) {
 		return new Cooldown(interval);
 	}
 
+	// Cooldown con un intervalo especificado de tipo FloatSupplier
 	public static Cooldown withInterval(FloatSupplier interval) {
 		return new Cooldown(interval);
 	}
 
 	/**
-	 * Decrease cooldown by seconds.
-	 * Does not trigger reset until {@link #ready(float)} is called.
+	 * Disminuye el cooldown en segundos.
+	 * No activa el restablecimiento hasta que se llama a {@link #ready(float)}.
 	 *
-	 * @param delta seconds to decrease cooldown with.
+	 * @param delta para disminuir el enfriamiento.
 	 */
 	public Cooldown decreaseBy(float delta) {
 		cooldown -= delta;
@@ -50,20 +53,23 @@ public class Cooldown {
 	}
 
 	/**
-	 * Reset cooldown to interval.
+	 * Restablece el cooldown al intervalo.
 	 *
-	 * @return Cooldown for chaining.
+	 * @return Cooldown para encadenamiento.
 	 */
 	public Cooldown restart() {
+
 		final float interval = intervalSupplier.get();
+
+		// Si se resto el desbordamiento del siguiente cooldown, entonces...
 		if (subtractOverflowFromNextCooldown) {
-			// enough to immediately trigger the cooldown again.
-			if (cooldown < -interval) {
-				cooldown = 0;
-			} else cooldown += interval;
-		} else {
-			cooldown = interval;
-		}
+
+			// Lo suficiente para activar de inmediato el tiempo de reutilizacion
+			if (cooldown < -interval) cooldown = 0;
+			else cooldown += interval;
+
+		} else cooldown = interval;
+
 		return this;
 	}
 
@@ -169,7 +175,7 @@ public class Cooldown {
 	}
 
 	/**
-	 * @return get current cooldown in seconds.
+	 * @return el cooldown actual en segundos.
 	 */
 	public float get() {
 		return cooldown;
