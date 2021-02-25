@@ -9,8 +9,8 @@ package net.mostlyoriginal.api.util;
  * Por defecto, se activa siempre que ha pasado el intervalo dado y se restablece a otro intervalo completo.
  * <p>
  * Use {@link #subtractOverflowFromNextCooldown(boolean)} para configurar como lidiar con los desbordamientos.
- * Digamos que un cooldown de 10 ms se activa con un delta de 16 ms. El desbordamiento
- * de 6 ms puede contar para el siguiente intervalo.
+ * Digamos que un cooldown de 10ms se activa con un delta de 16ms. El desbordamiento
+ * de 6ms puede contar para el siguiente intervalo.
  * <p>
  * Use {@link #autoReset(boolean)} cuando desee controlar el reinicio manualmente ejecutando {@link #restart()}
  */
@@ -45,7 +45,7 @@ public class Cooldown {
 	 * Disminuye el cooldown en segundos.
 	 * No activa el restablecimiento hasta que se llama a {@link #ready(float)}.
 	 *
-	 * @param delta para disminuir el enfriamiento.
+	 * @param delta para disminuir el enfriamiento
 	 */
 	public Cooldown decreaseBy(float delta) {
 		cooldown -= delta;
@@ -55,7 +55,7 @@ public class Cooldown {
 	/**
 	 * Restablece el cooldown al intervalo.
 	 *
-	 * @return Cooldown para encadenamiento.
+	 * @return cooldown para encadenar
 	 */
 	public Cooldown restart() {
 
@@ -74,10 +74,10 @@ public class Cooldown {
 	}
 
 	/**
-	 * Set new interval. Does not affect cooldown.
+	 * Establece un nuevo intervalo. No afecta el enfriamiento.
 	 *
-	 * @param interval new interval.
-	 * @return Cooldown for chaining.
+	 * @param interval
+	 * @return cooldown para encadenar
 	 */
 	public Cooldown newInterval(float interval) {
 		this.intervalSupplier = () -> interval;
@@ -85,10 +85,10 @@ public class Cooldown {
 	}
 
 	/**
-	 * Set new interval. Does not affect cooldown.
+	 * Establece un nuevo intervalo. No afecta el enfriamiento.
 	 *
-	 * @param intervalSupplier supplies interval.
-	 * @return Cooldown for chaining.
+	 * @param intervalSupplier
+	 * @return cooldown para encadenar
 	 */
 	public Cooldown newInterval(FloatSupplier intervalSupplier) {
 		this.intervalSupplier = intervalSupplier;
@@ -96,10 +96,10 @@ public class Cooldown {
 	}
 
 	/**
-	 * Set cooldown to given seconds. Does not affect subsequent interval.
+	 * Establece el tiempo de reutilizacion en segundos determinados. No afecta el intervalo posterior.
 	 *
-	 * @param cooldown cooldown in seconds.
-	 * @return Cooldown for chaining.
+	 * @param cooldown en segundos
+	 * @return cooldown para encadenar
 	 */
 	public Cooldown set(float cooldown) {
 		this.cooldown = cooldown;
@@ -107,43 +107,40 @@ public class Cooldown {
 	}
 
 	/**
-	 * Progress cooldown by delta seconds, and test if the cooldown has run out.
-	 * When autoReset is enabled, calling this method will call {@link #restart()} automatically.
+	 * Progresa el cooldown por segundos delta y prueba si se ha agotado.
+	 * Cuando autoReset este habilitado, este metodo llamara a {@link #restart()} automaticamente.
 	 *
-	 * @return {@code true} when the cooldown has run out.
+	 * @return {@code true} cuando se agota el cooldown
 	 */
 	public boolean ready(float delta) {
-		if (cooldown > 0) {
-			decreaseBy(delta);
-		}
+		if (cooldown > 0) decreaseBy(delta);
 		return ready();
 	}
 
 	/**
-	 * Test if the cooldown has run out.
-	 * When autoReset is enabled, calling this method will call {@link #restart()} automatically.
+	 * Prueba si el cooldown se ha agotado.
+	 * Cuando autoReset este habilitado, este metodo llamara a {@link #restart()} automaticamente.
 	 *
-	 * @return {@code true} when the cooldown has run out.
+	 * @return {@code true} cuando se agota el cooldown
 	 */
 	public boolean ready() {
 		boolean isReady = cooldown <= 0;
-		if (isReady && autoReset) {
-			restart();
-		}
+		if (isReady && autoReset) restart();
 		return isReady;
 	}
 
 	/**
-	 * @return {@code true} if the cooldown resets to interval whenever it reaches zero or below. {@code false} if the user will manually call {@link #restart()}.
+	 * @return {@code true} si el cooldown se restablece al intervalo cuando llega a cero o menos
+	 * {@code false} si el usuario llamara manualmente {@link #restart()}
 	 */
 	public boolean isAutoReset() {
 		return autoReset;
 	}
 
 	/**
-	 * @param value {@code true} if the cooldown resets to interval whenever it reaches zero or below.
-	 *              {@code false} if the user will manually call {@link #restart()}.
-	 * @return Cooldown for chaining.
+	 * @param value {@code true} si el cooldown se restablece al intervalo cuando llega a cero o menos
+	 *              {@code false} si el usuario llama manualmente {@link #restart()}
+	 * @return cooldown para encadenar
 	 */
 	public Cooldown autoReset(boolean value) {
 		this.autoReset = value;
@@ -151,23 +148,24 @@ public class Cooldown {
 	}
 
 	/**
-	 * When {@code true} any overflow is subtracted from the next cooldown. (So if you have 10ms cooldoswn, and the
-	 * frame took 16ms, the next cooldown will take 4ms). Useful when the time per frame is significant for the
-	 * cooldown.
+	 * Cuando {@code true} se resta cualquier desbordamiento del siguiente cooldown. (Por lo tanto, si tiene 10ms cooldown, y el
+	 * cuadro tomo 16ms, el siguiente tiempo de reutilizacion tomara 4ms). Util cuando el tiempo por cuadro es
+	 * significativo para el cooldown.
 	 *
-	 * @return {@code true} when overflow is subtracted, {@code false} if full interval is used for resets.
+	 * @return {@code true} cuando se resta el desbordamiento
+	 * {@code false} si se usa el intervalo completo para restablecimientos
 	 */
 	public boolean isSubtractOverflowFromNextCooldown() {
 		return subtractOverflowFromNextCooldown;
 	}
 
 	/**
-	 * When {@code true} any overflow is subtracted from the next cooldown. (So if you have 10ms cooldoswn, and the
-	 * frame took 16ms, the next cooldown will take 4ms). Useful when the time per frame is significant for the
-	 * cooldown.
+	 * Cuando {@code true} se resta cualquier desbordamiento del siguiente cooldown. (Por lo tanto, si tiene 10ms cooldown, y el
+	 * cuadro tomo 16ms, el siguiente tiempo de reutilizacion tomara 4ms). Util cuando el tiempo por cuadro es
+	 * significativo para el cooldown.
 	 *
 	 * @param value
-	 * @return Cooldown for chaining.
+	 * @return cooldown para encadenar
 	 */
 	public Cooldown subtractOverflowFromNextCooldown(boolean value) {
 		this.subtractOverflowFromNextCooldown = value;
@@ -175,7 +173,7 @@ public class Cooldown {
 	}
 
 	/**
-	 * @return el cooldown actual en segundos.
+	 * @return el cooldown actual en segundos
 	 */
 	public float get() {
 		return cooldown;
