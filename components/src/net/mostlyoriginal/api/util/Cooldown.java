@@ -21,7 +21,7 @@ public class Cooldown {
 	private boolean autoReset = true;
 	private boolean subtractOverflowFromNextCooldown = false;
 
-	private Cooldown(float intervalSupplier) {
+	private Cooldown(float intervalSupplier) { // intervalSupplier?
 		this.intervalSupplier = () -> intervalSupplier;
 		this.cooldown = intervalSupplier;
 	}
@@ -31,12 +31,12 @@ public class Cooldown {
 		this.cooldown = this.intervalSupplier.get();
 	}
 
-	// Cooldown con un intervalo especificado de tipo float
+	// Devuelve el cooldown con un intervalo de tipo float
 	public static Cooldown withInterval(float interval) {
 		return new Cooldown(interval);
 	}
 
-	// Cooldown con un intervalo especificado de tipo FloatSupplier
+	// Devueve el cooldown con un intervalo de tipo FloatSupplier
 	public static Cooldown withInterval(FloatSupplier interval) {
 		return new Cooldown(interval);
 	}
@@ -45,7 +45,7 @@ public class Cooldown {
 	 * Disminuye el cooldown en segundos.
 	 * No activa el restablecimiento hasta que se llama a {@link #ready(float)}.
 	 *
-	 * @param delta para disminuir el enfriamiento
+	 * @param delta para disminuir el cooldown
 	 */
 	public Cooldown decreaseBy(float delta) {
 		cooldown -= delta;
