@@ -14,6 +14,8 @@ package net.mostlyoriginal.api.util;
  * <p>
  * Use {@link #autoReset(boolean)} cuando desee controlar el reinicio manualmente ejecutando {@link #restart()}
  */
+
+// Tiempo de espera para recargar un obj
 public class Cooldown {
 
 	private FloatSupplier intervalSupplier; // Proveedor de intervalo
@@ -21,12 +23,14 @@ public class Cooldown {
 	private boolean autoReset = true;
 	private boolean subtractOverflowFromNextCooldown = false;
 
-	private Cooldown(float intervalSupplier) { // intervalSupplier?
-		this.intervalSupplier = () -> intervalSupplier;
+	private Cooldown(float intervalSupplier) {
+		this.intervalSupplier = () -> {
+			return intervalSupplier;
+		};
 		this.cooldown = intervalSupplier;
 	}
 
-	private Cooldown(FloatSupplier intervalSupplier) {
+	private Cooldown(FloatSupplier intervalSupplier) { // intervalSupplier?
 		this.intervalSupplier = intervalSupplier;
 		this.cooldown = this.intervalSupplier.get();
 	}
@@ -64,7 +68,7 @@ public class Cooldown {
 		// Si se resto el desbordamiento del siguiente cooldown, entonces...
 		if (subtractOverflowFromNextCooldown) {
 
-			// Lo suficiente para activar de inmediato el tiempo de reutilizacion
+			// Lo suficiente para activar de inmediato el cooldown
 			if (cooldown < -interval) cooldown = 0;
 			else cooldown += interval;
 
@@ -96,7 +100,7 @@ public class Cooldown {
 	}
 
 	/**
-	 * Establece el tiempo de reutilizacion en segundos determinados. No afecta el intervalo posterior.
+	 * Establece el cooldown en segundos determinados. No afecta el intervalo posterior.
 	 *
 	 * @param cooldown en segundos
 	 * @return cooldown para encadenar
