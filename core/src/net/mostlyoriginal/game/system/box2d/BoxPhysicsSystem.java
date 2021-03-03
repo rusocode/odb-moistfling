@@ -78,6 +78,10 @@ public class BoxPhysicsSystem extends FluidSystem {
 		 * */
 		super(Aspect.all(Pos.class, Boxed.class));
 
+		/**
+		 * Crea un objeto World pasandole la gravedad, osea un Vector2 (encapsula un vector 2D) y
+		 * mejorar el rendimiento al no simular cuerpos inactivos (true).
+		 */
 		box2d = new World(new Vector2(0, GRAVITY_Y), true);
 
 		box2d.setContactListener(new ContactListener() {
