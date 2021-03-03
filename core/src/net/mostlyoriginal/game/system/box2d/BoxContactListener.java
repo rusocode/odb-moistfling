@@ -5,17 +5,19 @@ import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Contact;
 import com.badlogic.gdx.physics.box2d.Joint;
 
-/**
- * Extensions for box2d contact events.
- *
- * @author Daan van Yperen
- */
+// Oyente de contacto
 public interface BoxContactListener {
-    /**
-     * called for both directions, a,b and b,a.
-     *
-     * Warning: called from the {@link BoxPhysicsSystem} process lifecycle, delay anything that breaks that lifecycle (entity removal/creation).
-     */
-    void beginContact(E a, E b);
-    void endContact(E a, E b);
+
+	/**
+	 * Llamado para ambas direcciones, a,b y b,a.
+	 * <p>
+	 * Advertencia: llamado desde el {@link BoxPhysicsSystem} ciclo de vida del proceso, retrasar cualquier cosa que rompa ese ciclo de
+	 * vida (eliminacion/creacion de entidades).
+	 */
+
+	// Comenzar contacto
+	void beginContact(E a, E b);
+
+	// Finalizar contacto
+	void endContact(E a, E b);
 }

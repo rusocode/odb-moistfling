@@ -30,9 +30,7 @@ import net.mostlyoriginal.game.system.view.GameScreenAssetSystem;
 import net.mostlyoriginal.game.system.view.MyClearScreenSystem;
 import net.mostlyoriginal.plugin.OperationsPlugin;
 
-/**
- * Ejemplo de pantalla de juego principal.
- */
+// Pantalla de juego principal
 public class GameScreen extends TransitionableWorldScreen {
 
 	public static final String BACKGROUND_COLOR_HEX = "000000";

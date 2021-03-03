@@ -16,36 +16,22 @@ import net.mostlyoriginal.game.system.view.LogoScreenAssetSystem;
 import net.mostlyoriginal.game.system.view.LogoScreenSetupSystem;
 import net.mostlyoriginal.plugin.OperationsPlugin;
 
-/**
- * Intro screen that also shows all enabled artemis-odb features for a couple of seconds.
- *
- * @author Daan van Yperen
- */
+// Pantalla de introduccion que tambien muestra todas las funciones de artemis-odb habilitadas durante un par de segundos
 public class LogoScreen extends TransitionableWorldScreen {
 
-    protected World createWorld() {
+	protected World createWorld() {
 
-        final RenderBatchingSystem renderBatchingSystem;
+		final RenderBatchingSystem renderBatchingSystem;
 
-        return new World(new WorldConfigurationBuilder()
-                .dependsOn(OperationsPlugin.class)
-                .dependsOn(SingletonPlugin.class)
-                .with(WorldConfigurationBuilder.Priority.HIGH,
-                        // supportive
-                        new SuperMapper(),
-                        new TagManager(),
-                        new FontManager(),
-                        new CameraSystem(2),
-                        new LogoScreenAssetSystem()
-                ).with(WorldConfigurationBuilder.Priority.LOW,
-                        // processing
-                        // animation
-                        renderBatchingSystem = new RenderBatchingSystem(),
-                        new MyAnimRenderSystem(renderBatchingSystem),
-                        new MyLabelRenderSystem(renderBatchingSystem),
-                        new LogoScreenSetupSystem(),
-                        new TransitionSystem(GdxArtemisGame.getInstance(), this)
-                ).build());
-    }
+		return new World(new WorldConfigurationBuilder().dependsOn(OperationsPlugin.class).dependsOn(SingletonPlugin.class)
+				.with(WorldConfigurationBuilder.Priority.HIGH,
+						// Apoyo
+						new SuperMapper(), new TagManager(), new FontManager(), new CameraSystem(2), new LogoScreenAssetSystem()) // zoom: 2
+				.with(WorldConfigurationBuilder.Priority.LOW,
+						// Procesado y animacion
+						renderBatchingSystem = new RenderBatchingSystem(), new MyAnimRenderSystem(renderBatchingSystem),
+						new MyLabelRenderSystem(renderBatchingSystem), new LogoScreenSetupSystem(),
+						new TransitionSystem(GdxArtemisGame.getInstance(), this)).build());
+	}
 
 }

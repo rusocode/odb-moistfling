@@ -5,24 +5,21 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 
-/**
- * @author Daan van Yperen
- */
+// Limpia la pantalla
 public class MyClearScreenSystem extends BaseSystem {
 
-    public Color color;
+	public Color color;
 
-    public MyClearScreenSystem() {
-        this(Color.BLACK);
-    }
+	public MyClearScreenSystem() {
+		this(Color.BLACK);
+	}
 
-    public MyClearScreenSystem(Color color) {
-        this.color = color;
-    }
+	public MyClearScreenSystem(Color color) {
+		this.color = color;
+	}
 
-    @Override
-    protected void processSystem( ) {
-        Gdx.gl.glClearColor(color.r, color.g,color.b,color.a);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-    }
+	@Override protected void processSystem() {
+		Gdx.gl.glClearColor(color.r, color.g, color.b, color.a);
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+	}
 }

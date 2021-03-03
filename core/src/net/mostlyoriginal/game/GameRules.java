@@ -3,9 +3,7 @@ package net.mostlyoriginal.game;
 import com.badlogic.gdx.audio.Music;
 import net.mostlyoriginal.game.component.Score;
 
-/**
- * @author Daan van Yperen
- */
+// Reglas del juego
 public abstract class GameRules {
 	public static final int WALKING_SPEED_VISITORS = 50;
 
