@@ -32,24 +32,52 @@ public class BoxPhysicsSystem extends FluidSystem {
 	private List<BoxDestructionListener> destructionListeners = new ArrayList<>();
 	private List<BoxContactListener> contactListeners = new ArrayList<>();
 
+	// Agrega el oyente de destruccion a la lista de oyentes
+	public void register(BoxDestructionListener destructionListener) {
+		destructionListeners.add(destructionListener);
+	}
+
+	// Agrega el oyente de contacto a la lista de oyentes
+	public void register(BoxContactListener contactListener) {
+		contactListeners.add(contactListener);
+	}
+
+	/*
+	 * La clase World gestiona todas las entidades fisicas, simulacion dinamica y consultas asincronicas. Esta clase tambien
+	 * contiene instalaciones de gestion de memoria eficientes.
+	 */
 	public World box2d;
 
 	public World getBox2d() {
 		return box2d;
 	}
 
-	public void register(BoxDestructionListener destructionListener) {
-		destructionListeners.add(destructionListener);
-	}
+	// private MouseThrowSystem mouseThrowSystem;
 
-	public void register(BoxContactListener contactListener) {
-		contactListeners.add(contactListener);
-	}
-
-	//private MouseThrowSystem mouseThrowSystem;
-
+	// Constructor
 	public BoxPhysicsSystem() {
+
+		/**
+		 * Los sistemas utilizan la clase Aspect como comparador contra entidades, para comprobar si un sistema esta interesado en una entidad.
+		 *
+		 * Los aspectos definen que tipo de tipos de componentes debe poseer o no una entidad.
+		 *
+		 * EJ:
+		 * Esto crea un aspecto en el que una entidad debe poseer A, B y C: Aspect.all(A.class, B.class, C.class)
+		 *
+		 * ----
+		 *
+		 * En este caso se utilizan los componentes Pos y Boxed.
+		 *
+		 * Pos:
+		 * World "anclado" para sistemas de coordenadas 2D y 3D. Por defecto, Pos es el punto inferior izquierdo.
+		 *
+		 * Boxed (Body):
+		 * Un cuerpo rigido. Estos se crean a traves de World.CreateBody.
+		 *
+		 * */
 		super(Aspect.all(Pos.class, Boxed.class));
+
 		box2d = new World(new Vector2(0, GRAVITY_Y), true);
 
 		box2d.setContactListener(new ContactListener() {
