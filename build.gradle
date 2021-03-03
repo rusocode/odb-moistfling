@@ -1,5 +1,7 @@
 // Gradle 4.6
 
+/* Seccion para Gradle en si (es decir, cambios en la forma en que gradle puede realizar la compilacion). Por lo tanto,
+esta seccion generalmente incluira el complemento Gradle de Android. */
 buildscript {
 
     repositories {
@@ -10,7 +12,7 @@ buildscript {
         jcenter()
         google()
     }
-    
+
     dependencies {
 
         // Agrega las dependencias pasandole las rutas de clases (archivos .jar remotos o locales (.gradle))
@@ -30,6 +32,7 @@ buildscript {
     }
 }
 
+// Seccion para los modulos del proyecto
 allprojects {
 
     apply plugin: "eclipse"
@@ -41,21 +44,20 @@ allprojects {
         appVersion = '1.0'
         gdxVersion = '1.9.10'
         // roboVMVersion = '2.3.5'
-        artemisVersion = '2.3.0' // Actualiza tambien los complementos de Gradle anteriores!
+        artemisVersion = '2.3.0' // Actualizar tambien los complementos de Gradle anteriores!
         artemisContribVersion = '2.5.0'
         // box2DLightsVersion = '1.4'
         // ashleyVersion = '1.7.0'
         // aiVersion = '1.8.0'
     }
 
-    // Cual es la diferencia con el bloque de buildscript?
-   repositories {
-       mavenLocal()
-       mavenCentral()
-       maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
-       maven { url "https://oss.sonatype.org/content/repositories/releases/" }
-       jcenter()
-       google()
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+        maven { url "https://oss.sonatype.org/content/repositories/releases/" }
+        jcenter()
+        google()
     }
 
     tasks.withType(JavaCompile) {
@@ -70,7 +72,7 @@ project(":desktop") {
     apply plugin: "java"
 
     dependencies {
-    
+
         compile project(":core")
         compile "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
@@ -82,7 +84,7 @@ project(":desktop") {
         // compile "com.badlogicgames.gdx:gdx-tools:$gdxVersion"
         // compile "com.badlogicgames.gdx:gdx-controllers-desktop:$gdxVersion"
         // compile "com.badlogicgames.gdx:gdx-controllers-platform:$gdxVersion:natives-desktop"
-        
+
     }
 }
 
@@ -137,7 +139,7 @@ project(":components") {
     apply plugin: "java"
 
     dependencies {
-    
+
         // Componentes a exponer
         compile "net.onedaybeard.artemis:artemis-odb:$artemisVersion"
         compile "net.mostlyoriginal.artemis-odb:contrib-core:$artemisContribVersion"
@@ -146,7 +148,7 @@ project(":components") {
         compile "com.badlogicgames.gdx:gdx:$gdxVersion"
 
     }
-    
+
 }
 
 // Logica y sistemas de juego
@@ -171,7 +173,7 @@ project(":core") {
     }
 
     dependencies {
-    
+
         compile project(":components")
         compile "com.badlogicgames.gdx:gdx:$gdxVersion"
 
